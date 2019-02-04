@@ -1,5 +1,47 @@
 from openrazer_daemon.dbus_services import endpoint
 
+@endpoint('razer.device.lighting.logo', 'getLogoBrightness', out_sig='d')
+def get_logo_brightness(self):
+    """
+    Get the device's brightness
+    :return: Brightness
+    :rtype: float
+    """
+    self.logger.debug("DBus call get_logo_brightness")
+
+    driver_path = self.get_driver_path('logo_led_brightness')
+
+    with open(driver_path, 'r') as driver_file:
+        brightness = round(float(driver_file.read()) * (100.0 / 255.0), 2)
+
+        return brightness
+
+
+@endpoint('razer.device.lighting.logo', 'setLogoBrightness', in_sig='d')
+def set_logo_brightness(self, brightness):
+    """
+    Set the device's brightness
+    :param brightness: Brightness
+    :type brightness: int
+    """
+    self.logger.debug("DBus call set_logo_brightness")
+
+    driver_path = self.get_driver_path('logo_led_brightness')
+
+    self.method_args['brightness'] = brightness
+
+    brightness = int(round(brightness * (255.0 / 100.0)))
+    if brightness > 255:
+        brightness = 255
+    elif brightness < 0:
+        brightness = 0
+
+    with open(driver_path, 'w') as driver_file:
+        driver_file.write(str(brightness))
+
+    # Notify others
+    self.send_effect_event('setBrightness', brightness)
+
 
 @endpoint('razer.device.lighting.logo', 'setLogoStatic', in_sig='yyy')
 def set_logo_static_naga_trinity(self, red, green, blue):
