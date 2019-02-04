@@ -411,7 +411,7 @@ class RazerNagaTrinity(__RazerDeviceSpecialBrightnessSuspend):
     """
     Class for the Razer Naga Trinity
     """
-    EVENT_FILE_REGEX = re.compile(r'.*Razer_Naga_Chroma-if0(1|2)-event-kbd')
+    EVENT_FILE_REGEX = re.compile(r'.*Razer_Naga_Trinity-if0(1|2)-event-kbd')
 
     USB_VID = 0x1532
     USB_PID = 0x0067
@@ -423,9 +423,9 @@ class RazerNagaTrinity(__RazerDeviceSpecialBrightnessSuspend):
                # Thumbgrid is technically backlight ID
                'set_static_effect', 'set_spectrum_effect', 'set_reactive_effect', 'set_none_effect', 'set_breath_random_effect', 'set_breath_single_effect', 'set_breath_dual_effect',
                # Logo
-               'set_logo_static_naga_hex_v2', 'set_logo_spectrum_naga_hex_v2', 'set_logo_none_naga_hex_v2', 'set_logo_reactive_naga_hex_v2', 'set_logo_breath_random_naga_hex_v2', 'set_logo_breath_single_naga_hex_v2', 'set_logo_breath_dual_naga_hex_v2',
+               'set_logo_static_naga_trinity', 'set_logo_spectrum_naga_trinity', 'set_logo_none_naga_trinity', 'set_logo_reactive_naga_trinity', 'set_logo_breath_random_naga_trinity', 'set_logo_breath_single_naga_trinity', 'set_logo_breath_dual_naga_trinity',
                # Scroll wheel
-               'set_scroll_static_naga_hex_v2', 'set_scroll_spectrum_naga_hex_v2', 'set_scroll_none_naga_hex_v2', 'set_scroll_reactive_naga_hex_v2', 'set_scroll_breath_random_naga_hex_v2', 'set_scroll_breath_single_naga_hex_v2', 'set_scroll_breath_dual_naga_hex_v2',
+               'set_scroll_static_naga_trinity', 'set_scroll_spectrum_naga_trinity', 'set_scroll_none_naga_trinity', 'set_scroll_reactive_naga_trinity', 'set_scroll_breath_random_naga_trinity', 'set_scroll_breath_single_naga_trinity', 'set_scroll_breath_dual_naga_trinity',
                # #Macros
                'get_macros', 'delete_macro', 'add_macro',
                # Can set Logo, Scroll and thumbgrid with custom
