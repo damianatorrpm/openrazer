@@ -70,7 +70,7 @@ def set_logo_none_naga_trinity(self):
 
 
 @endpoint('razer.device.lighting.logo', 'setLogoReactive', in_sig='yyyy')
-def set_logo_reactive_naga_hex_v2(self, red, green, blue, speed):
+def set_logo_reactive_naga_trinity(self, red, green, blue, speed):
     """
     Set the device to reactive effect
 
