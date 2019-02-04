@@ -406,6 +406,49 @@ class RazerNagaChroma(__RazerDeviceSpecialBrightnessSuspend):
         super(RazerNagaChroma, self)._close()
 
         # self.key_manager.close()
+        
+class RazerNagaTrinity(__RazerDeviceSpecialBrightnessSuspend):
+    """
+    Class for the Razer Naga Trinity
+    """
+    EVENT_FILE_REGEX = re.compile(r'.*Razer_Naga_Chroma-if0(1|2)-event-kbd')
+
+    USB_VID = 0x1532
+    USB_PID = 0x0067
+    HAS_MATRIX = True
+    DEDICATED_MACRO_KEYS = True
+    MATRIX_DIMS = [1, 3]
+    METHODS = ['get_device_type_mouse', 'get_dpi_xy', 'set_dpi_xy', 'get_poll_rate', 'set_poll_rate',
+               'get_logo_brightness', 'set_logo_brightness', 'get_scroll_brightness', 'set_scroll_brightness', 'max_dpi',
+               # Thumbgrid is technically backlight ID
+               'set_static_effect', 'set_spectrum_effect', 'set_reactive_effect', 'set_none_effect', 'set_breath_random_effect', 'set_breath_single_effect', 'set_breath_dual_effect',
+               # Logo
+               'set_logo_static_naga_hex_v2', 'set_logo_spectrum_naga_hex_v2', 'set_logo_none_naga_hex_v2', 'set_logo_reactive_naga_hex_v2', 'set_logo_breath_random_naga_hex_v2', 'set_logo_breath_single_naga_hex_v2', 'set_logo_breath_dual_naga_hex_v2',
+               # Scroll wheel
+               'set_scroll_static_naga_hex_v2', 'set_scroll_spectrum_naga_hex_v2', 'set_scroll_none_naga_hex_v2', 'set_scroll_reactive_naga_hex_v2', 'set_scroll_breath_random_naga_hex_v2', 'set_scroll_breath_single_naga_hex_v2', 'set_scroll_breath_dual_naga_hex_v2',
+               # #Macros
+               'get_macros', 'delete_macro', 'add_macro',
+               # Can set Logo, Scroll and thumbgrid with custom
+               'set_custom_effect', 'set_key_row']
+
+    RAZER_URLS = {
+        "top_img": "https://assets2.razerzone.com/images/razer-naga-chroma/f7b87fa2737556bbeedb7352ee5cdb67-razer-naga-chroma-gallery-06.jpg",
+        "side_img": "https://assets2.razerzone.com/images/razer-naga-chroma/28b8a7b0bf18c4bb0ffe6fe22d070dba-razer-naga-chroma-gallery-02.jpg",
+        "perspective_img": "https://assets2.razerzone.com/images/razer-naga-chroma/15fc24f88b577a6d080ed9e0e6a1b219-razer-naga-chroma-gallery-03.jpg"
+    }
+
+    DPI_MAX = 16000
+
+    def __init__(self, *args, **kwargs):
+        super(RazerNagaTrinity, self).__init__(*args, **kwargs)
+
+    def _close(self):
+        """
+        Close the key manager
+        """
+        super(RazerNagaTrinity, self)._close()
+
+        # self.key_manager.close()
 
 
 class RazerNagaHex(__RazerDevice):
